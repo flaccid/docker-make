@@ -4,8 +4,10 @@ A `Makefile` to provide high-level commands for building, running and managing D
 
 ## Requirements
 
-- Linux, Mac OS X or Microsoft Windows
-- GNU Make (see https://confluence.iag.com.au/display/DEV/GNU+Make for installation)
+- Linux, macOS or Microsoft Windows
+- [GNU Make](https://www.gnu.org/software/make/)
+
+For Microsoft Windows users, consider [Make for Windows](http://gnuwin32.sourceforge.net/packages/make.htm).
 
 ## Usage
 
