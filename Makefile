@@ -1,4 +1,4 @@
-DOCKER_REGISTRY = registry.domain.corp
+DOCKER_REGISTRY = index.docker.io
 IMAGE_NAME = helloworld
 IMAGE_VERSION = latest
 IMAGE_ORG = library
