@@ -4,19 +4,6 @@ IMAGE_VERSION = latest
 IMAGE_ORG = library
 IMAGE_TAG = $(DOCKER_REGISTRY)/$(IMAGE_ORG)/$(IMAGE_NAME):$(IMAGE_VERSION)
 
-# default to the corporate proxy if not set in env
-ifneq ($(strip $(http_proxy)),)
-		HTTP_PROXY ?= $(http_proxy)
-else
-		HTTP_PROXY = http://proxy.domain.corp:8080/
-endif
-
-ifneq ($(strip $(https_proxy)),)
-		HTTPS_PROXY ?= $(https_proxy)
-else
-		HTTPS_PROXY = http://proxy.domain.corp:8080/
-endif
-
 WORKING_DIR := $(shell pwd)
 
 .DEFAULT_GOAL := build
@@ -31,8 +18,8 @@ push:: ## Pushes the docker image to the registry
 build:: ## Builds the docker image locally
 		@echo http_proxy=$(HTTP_PROXY) http_proxy=$(HTTPS_PROXY)
 		@docker build --pull \
-		--build-arg=http_proxy=$HTTP_PROXY \
-		--build-arg=https_proxy=$HTTPS_PROXY \
+		--build-arg=http_proxy=$(HTTP_PROXY) \
+		--build-arg=https_proxy=$(HTTPS_PROXY) \
 		-t $(IMAGE_TAG) $(WORKING_DIR)
 
 # A help target including self-documenting targets (see the awk statement)
